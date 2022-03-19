@@ -1,35 +1,54 @@
-use std::env;
-use std::fs::File;
-use std::fs;
 use serde::{Deserialize,Serialize};
-use serde_json::{Result, Value,json};
+use serde_json::{json, Value};
+use ansi_term::Color::*;
+use std::io::stdin;
 use std::io::Read;
+use std::fs::File;
+use regex::Regex;
+use rand::Rng;
+use std::env;
+use reqwest;
+use std::fs;
+
+//fn write(path: &str,dict:&Value){
+//    let write = serde_json::to_string_pretty(dict).unwrap();
+//    fs::write(path, write);
+//
+//}
+//fn main() {
+//    
+//    let flags: Vec<String> = env::args().collect();
+//    let null: usize = 3000;
+//    
+//    
+//    
+//    
+//
+//    
+//    if flags[1] == "-d"{
+//        
+//    }else if flags[1] == "-f"{
+//    }else if flags[1] == "-p"{
+//    }else if flags[1] == "-s"{
+//    }
+//}
+//#[derive(Debug, StructOpt)]
+//#[structopt(name = "Kanji", about = "A dictionary for kanji")]
+//struct Opt {
+//    // Activate debug mode
+//    // short and long flags (-d, --debug) will be deduced from the field's name
+//    #[structopt(short, long)]
+//    debug: bool,
+//
+//    // Set speed
+//    // we don't want to name it "speed", need to look smart
+//    #[structopt(long = "daily", default_value = "1")]
+//    speed: u16,
+//}
 
 fn main() {
-    
-    let args: Vec<String> = env::args().collect();
-    if args[1] == "-d"{
-        let file = "kanji.txt";
-        let contents = fs::read_to_string(file);
-        let mut kl = Vec::new();
-        for i in contents{
-            for c in i.chars(){
-                kl.push(c);
-            }
-        }
-        let path = "src/used.json";
-        let mut d= File::open(path).unwrap();
-        let mut contents= String::new();
-        d.read_to_string(&mut contents);
-
-        
-        
-
-        let dict: Value = serde_json::from_str(&contents).unwrap();
-        let used = &dict["used"];
-        let ls: Vec<u8>=serde_json::to_string(used).unwrap().as_bytes().to_vec();
-    
-        println!("{}\n{:?}",used,ls);
-
-    }
+//    let opt = Opt::from_args();
+//    println!("{:?}", opt);
+		println!("hi");
 }
+
