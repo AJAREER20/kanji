@@ -12,6 +12,8 @@ use reqwest;
 use std::fs;
 
 mod daily;
+mod printcurr;
+mod finish;
 //fn write(path: &str,dict:&Value){
 //    let write = serde_json::to_string_pretty(dict).unwrap();
 //    fs::write(path, write);
@@ -39,7 +41,8 @@ mod daily;
 enum Opt {
 	
     daily,
-	//finish,
+	current,
+	finish,
 }
 
 fn main() {
@@ -47,7 +50,8 @@ fn main() {
 
 	match opt{
 			Opt::daily => daily::daily(),
-			//Opt::finish => finish::finish()
+			Opt::current => printcurr::printc(),
+			Opt::finish => finish::finish()
 	}
 }
 

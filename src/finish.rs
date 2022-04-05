@@ -1,5 +1,13 @@
+use serde::{Deserialize,Serialize};
+use serde_json::{json, Value};
+use std::io::stdin;
+use std::io::Read;
+use std::fs::File;
+use std::fs;
+
 include!("vtu.rs");
-fn finish(){
+include!("wtf.rs");
+pub fn finish(){
 	let null:usize = 3000;
 
 	let path = "src/used.json";
