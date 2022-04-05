@@ -9,6 +9,7 @@ use std::fs;
 include!("vtu.rs");
 include!("parsek.rs");
 include!("getinfo.rs");
+
 pub fn printc(){
 	let null: usize = 3000;
 	let kl = parsek();

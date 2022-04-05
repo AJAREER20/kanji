@@ -1,8 +1,18 @@
 
+use serde_json::{json, Value};
+use ansi_term::Color::*;
+use std::fs::File;
+use std::io::Read;
+use regex::Regex;
+use std::fs;
 
+include!("vtu.rs");
 include!("parsek.rs");
-pub fn search(){
-    let ind: usize = kl.iter().position(|&r| r == flags[2].parse::<char>().unwrap()).unwrap();
+include!("getinfo.rs");
+pub fn search(kanji: char){
+	let kl = parsek();
+
+    let ind: usize = kl.iter().position(|&r| r == kanji).unwrap();
     
     printk(ind,kl);
 }

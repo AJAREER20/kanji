@@ -14,6 +14,7 @@ use std::fs;
 mod daily;
 mod printcurr;
 mod finish;
+mod search;
 //fn write(path: &str,dict:&Value){
 //    let write = serde_json::to_string_pretty(dict).unwrap();
 //    fs::write(path, write);
@@ -43,6 +44,9 @@ enum Opt {
     daily,
 	current,
 	finish,
+	search{
+			kanji:char
+	},
 }
 
 fn main() {
@@ -51,7 +55,8 @@ fn main() {
 	match opt{
 			Opt::daily => daily::daily(),
 			Opt::current => printcurr::printc(),
-			Opt::finish => finish::finish()
+			Opt::finish => finish::finish(),
+			Opt::search {kanji} => search::search(kanji)
 	}
 }
 
