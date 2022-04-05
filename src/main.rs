@@ -1,6 +1,7 @@
 use serde::{Deserialize,Serialize};
 use serde_json::{json, Value};
 use ansi_term::Color::*;
+use structopt::StructOpt;
 use std::io::stdin;
 use std::io::Read;
 use std::fs::File;
@@ -10,6 +11,7 @@ use std::env;
 use reqwest;
 use std::fs;
 
+mod daily;
 //fn write(path: &str,dict:&Value){
 //    let write = serde_json::to_string_pretty(dict).unwrap();
 //    fs::write(path, write);
@@ -32,23 +34,20 @@ use std::fs;
 //    }else if flags[1] == "-s"{
 //    }
 //}
-//#[derive(Debug, StructOpt)]
-//#[structopt(name = "Kanji", about = "A dictionary for kanji")]
-//struct Opt {
-//    // Activate debug mode
-//    // short and long flags (-d, --debug) will be deduced from the field's name
-//    #[structopt(short, long)]
-//    debug: bool,
-//
-//    // Set speed
-//    // we don't want to name it "speed", need to look smart
-//    #[structopt(long = "daily", default_value = "1")]
-//    speed: u16,
-//}
+#[derive(Debug, StructOpt)]
+#[structopt(name = "Kanji", about = "A dictionary for kanji")]
+enum Opt {
+	
+    daily,
+	//finish,
+}
 
 fn main() {
-//    let opt = Opt::from_args();
-//    println!("{:?}", opt);
-		println!("hi");
+    let opt = Opt::from_args();
+
+	match opt{
+			Opt::daily => daily::daily(),
+			//Opt::finish => finish::finish()
+	}
 }
 

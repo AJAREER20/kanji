@@ -1,4 +1,4 @@
-fn parsek()-> Vec{
+fn parsek()-> Vec<char>{
     let file = "src/kanji.txt";
     let contents = fs::read_to_string(file);
     let mut kl = Vec::new();

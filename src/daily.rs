@@ -1,11 +1,27 @@
 use serde::{Deserialize,Serialize};
 use serde_json::{json, Value};
+use ansi_term::Color::*;
+use std::io::stdin;
+use std::io::Read;
+use std::fs::File;
+use regex::Regex;
 use rand::Rng;
+use std::fs;
 
-mod parsek::parsek;
+include!("parsek.rs");
+include!("wtf.rs");
+include!("vtu.rs");
+include!("getinfo.rs");
 
-fn daily(){
+pub fn daily(){
     let kl = parsek(); 
+
+	let path = "src/used.json";
+    let mut d= File::open(path).unwrap();
+    let mut contents= String::new();
+    d.read_to_string(&mut contents);
+
+    let mut dict: Value = serde_json::from_str(&contents).unwrap();
     let mut rng = rand::thread_rng();
     while true{
         let randind = rng.gen_range(0..(kl.len()));

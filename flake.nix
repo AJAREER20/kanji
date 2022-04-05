@@ -8,7 +8,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       devShell = pkgs.mkShell {
-        nativeBuildInputs = with pkgs; [ rustc cargo ];
+        nativeBuildInputs = with pkgs; [ rustc cargo cargo-watch ];
         buildInputs = [ ];
       };
     });

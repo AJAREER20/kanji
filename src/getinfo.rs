@@ -1,6 +1,4 @@
-use reqwest;
-use regex::Regex;
-use ansi_term::Color::*;
+include!("getpro.rs");
 
 fn printk(index:usize,kl:Vec<char>){
     
