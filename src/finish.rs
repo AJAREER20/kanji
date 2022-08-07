@@ -1,17 +1,31 @@
+
 use serde::{Deserialize,Serialize};
 use serde_json::{json, Value};
+use std::process::Command;
 use std::io::stdin;
-use std::io::Read;
 use std::fs::File;
+use std::io::Read;
 use std::fs;
+
 
 include!("vtu.rs");
 include!("wtf.rs");
 pub fn finish(){
 	let null:usize = 3000;
 
-	let path = "src/used.json";
-	let mut d= File::open(path).unwrap();
+    let findDirectory = Command::new("find")
+                    .arg("/home")
+                    .arg("-type")
+                    .arg("d")
+                    .arg("-name")
+                    .arg("kanji")
+                    .output()
+                    .expect("command failed to start");
+    let mut directory = String::from_utf8(findDirectory.stdout).unwrap();
+    directory.pop();
+
+	let path: &str = &format!("{}/src/used.json",directory);
+	let mut d= File::open(&path).unwrap();
 	let mut contents= String::new();
 	d.read_to_string(&mut contents);
 	

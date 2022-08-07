@@ -1,3 +1,4 @@
+
 use structopt::StructOpt;
 
 mod daily;
